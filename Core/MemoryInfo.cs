@@ -1,7 +1,13 @@
-﻿namespace ConsoleApp1;
+﻿using Microsoft.VisualBasic;
+
+namespace ConsoleApp1;
 
 public class MemoryInfo
 {
+    /// <summary>
+    /// Gets computer drives info 
+    /// </summary>
+    /// <returns>Dictionary where key = drive name and value = list of disk characteristics </returns>
     public static Dictionary<string, List<string>> MemoryUsageInfo()
     {
         var drives = DriveInfo.GetDrives();
@@ -9,6 +15,8 @@ public class MemoryInfo
 
         foreach (var drive in drives)
         {
+            // TODO: Add to list without ${} construction.
+            // I don't know how to add double to list with only 2 numbers after comma, so I use this weird method.
             var values = new List<string>
             {
                 $"{drive.TotalSize / Math.Pow(1024, 3):F2}",
@@ -19,21 +27,5 @@ public class MemoryInfo
         }
 
         return info;
-    }
-
-    internal static void ShowMemoryUsage()
-    {
-        var info = MemoryUsageInfo();
-
-        foreach (var values in info)
-        {
-            Console.WriteLine(values.Key);
-
-            foreach (var value in values.Value)
-            {
-                if (double.TryParse(value, out var x))
-                    Console.WriteLine($"\t{x}");
-            }
-        }
     }
 }

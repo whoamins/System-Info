@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using LiveCharts;
 using LiveCharts.Defaults;

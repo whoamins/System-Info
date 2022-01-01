@@ -10,6 +10,10 @@ public class MemoryCharts
 {
     private readonly Dictionary<string, List<string>> _memoryUsageInfo = MemoryInfo.MemoryUsageInfo();
     
+    /// <summary>
+    /// Creates Pie Chart For Total Drive Size
+    /// </summary>
+    /// <returns>SeriesCollection object</returns>
     public SeriesCollection GetTotalMemoryChart()
     {
         var seriesCollection = new SeriesCollection();
