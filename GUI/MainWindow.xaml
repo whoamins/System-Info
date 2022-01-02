@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1000">
     <Grid>
-        <lvc:PieChart Name="Chart" Grid.Row="1" Series="{Binding SeriesCollection}" 
-                      LegendLocation="Right" InnerRadius="100" Margin="0 15">
-            <lvc:PieChart.ChartLegend>
-                <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
-            </lvc:PieChart.ChartLegend>
-            <lvc:PieChart.DataTooltip>
-                <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
-            </lvc:PieChart.DataTooltip>
-        </lvc:PieChart>
+        <StackPanel Orientation="Horizontal">
+            <lvc:PieChart VerticalAlignment="Top" Name="Chart" Grid.Row="1" Series="{Binding MemoryUsageSeriesCollection}" 
+                          LegendLocation="Right" InnerRadius="75" Width="300px" Padding="15 45">
+                <lvc:PieChart.ChartLegend>
+                    <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                </lvc:PieChart.ChartLegend>
+                <lvc:PieChart.DataTooltip>
+                    <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                </lvc:PieChart.DataTooltip>
+            </lvc:PieChart>
+        </StackPanel>
     </Grid>
 </Window>

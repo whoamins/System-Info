@@ -16,13 +16,13 @@ namespace GUI
     public partial class MainWindow
     {
         private readonly MemoryCharts _memoryCharts = new MemoryCharts();
-        public SeriesCollection SeriesCollection { get; set; }
+        public SeriesCollection MemoryUsageSeriesCollection { get; set; }
         
         public MainWindow()
         {
             InitializeComponent();
 
-            SeriesCollection = _memoryCharts.GetTotalMemoryChart();
+            MemoryUsageSeriesCollection = _memoryCharts.GetTotalMemoryChart();
             
             DataContext = this;
         }
