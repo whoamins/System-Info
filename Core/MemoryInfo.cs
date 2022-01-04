@@ -8,19 +8,17 @@ public class MemoryInfo
     /// Gets computer drives info 
     /// </summary>
     /// <returns>Dictionary where key = drive name and value = list of disk characteristics </returns>
-    public static Dictionary<string, List<string>> MemoryUsageInfo()
+    public static Dictionary<string, List<double>> MemoryUsageInfo()
     {
         var drives = DriveInfo.GetDrives();
-        var info = new Dictionary<string, List<string>>();
+        var info = new Dictionary<string, List<double>>();
 
         foreach (var drive in drives)
         {
-            // TODO: Add to list without ${} construction.
-            // I don't know how to add double to list with only 2 numbers after comma, so I use this weird method.
-            var values = new List<string>
+            var values = new List<double>
             {
-                $"{drive.TotalSize / Math.Pow(1024, 3):F2}",
-                $"{drive.AvailableFreeSpace / Math.Pow(1024, 3):F2}"
+                Math.Round(drive.TotalSize / Math.Pow(1024, 3), 2),
+                Math.Round(drive.AvailableFreeSpace / Math.Pow(1024, 3), 2)
             };
             
             info.Add(drive.Name, values);
