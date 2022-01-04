@@ -32,4 +32,23 @@ public class MemoryCharts
 
         return seriesCollection;
     }
+
+    public SeriesCollection GetAvailableMemoryChart()
+    {
+        var seriesCollection = new SeriesCollection();
+
+        foreach (var info in _memoryUsageInfo)
+        {
+            var title = info.Key;
+            
+            seriesCollection.Add(new PieSeries
+            {
+                Title = title,
+                Values = new ChartValues<ObservableValue> {new ObservableValue(info.Value[1])},
+                DataLabels = true
+            });
+        }
+
+        return seriesCollection;
+    }
 }
