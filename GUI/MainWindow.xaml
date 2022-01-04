@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000">
+        Title="MainWindow" Height="900" Width="900">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -18,10 +18,25 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        
         <!-- Total Memory Size Graph -->
         <StackPanel Grid.Row="0" Grid.Column="0" Width="Auto" Height="Auto">
             <TextBlock FontSize="24" HorizontalAlignment="Center">Total Memory Size</TextBlock>
             <lvc:PieChart Series="{Binding MemoryUsageSeriesCollection}" 
+                          LegendLocation="Bottom" InnerRadius="70" Width="300" Height="300" Padding="0">
+                <lvc:PieChart.ChartLegend>
+                    <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                </lvc:PieChart.ChartLegend>
+                <lvc:PieChart.DataTooltip>
+                    <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                </lvc:PieChart.DataTooltip>
+            </lvc:PieChart>
+        </StackPanel>
+        
+        <!-- Available Memory Size -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Width="Auto" Height="Auto">
+            <TextBlock FontSize="24" HorizontalAlignment="Center">Available Memory Size</TextBlock>
+            <lvc:PieChart Series="{Binding MemoryAvailableSeriesCollection}" 
                           LegendLocation="Bottom" InnerRadius="70" Width="300" Height="300" Padding="0">
                 <lvc:PieChart.ChartLegend>
                     <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
