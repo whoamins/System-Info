@@ -17,12 +17,14 @@ namespace GUI
     {
         private readonly MemoryCharts _memoryCharts = new MemoryCharts();
         public SeriesCollection MemoryUsageSeriesCollection { get; set; }
+        public SeriesCollection MemoryAvailableSeriesCollection { get; set; }
         
         public MainWindow()
         {
             InitializeComponent();
 
             MemoryUsageSeriesCollection = _memoryCharts.GetTotalMemoryChart();
+            MemoryAvailableSeriesCollection = _memoryCharts.GetAvailableMemoryChart();
             
             DataContext = this;
         }
