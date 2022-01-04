@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace ConsoleApp1;
+﻿namespace ConsoleApp1;
 
 public class MemoryInfo
 {
