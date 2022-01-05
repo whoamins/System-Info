@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ConsoleApp1;
+﻿using ConsoleApp1;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
@@ -8,43 +7,43 @@ namespace GUI.Charts;
 
 public class MemoryCharts
 {
-    private readonly Dictionary<string, List<double>> _memoryUsageInfo = MemoryInfo.MemoryUsageInfo();
-    
+    private MemoryInfo _memoryInfo = new MemoryInfo();
+
     /// <summary>
-    /// Creates Pie Chart For Total Drive Size
+    /// Creates Pie Chart For Available Drive Size
     /// </summary>
     /// <returns>SeriesCollection object</returns>
-    public SeriesCollection GetTotalMemoryChart()
+    public SeriesCollection GetAvailableMemoryChart()
     {
         var seriesCollection = new SeriesCollection();
-        
-        foreach (var info in _memoryUsageInfo)
+
+        foreach (var (title, value) in _memoryInfo.AvailableMemoryInfo())
         {
-            var title = info.Key;
-            
             seriesCollection.Add(new PieSeries
             {
                 Title = title,
-                Values = new ChartValues<ObservableValue> {new ObservableValue(info.Value[0])},
+                Values = new ChartValues<ObservableValue> {new (value)},
                 DataLabels = true
             });
         }
 
         return seriesCollection;
     }
-
-    public SeriesCollection GetAvailableMemoryChart()
+    
+    /// <summary>
+    /// Creates Pie Chart For Total Drive Size
+    /// </summary>
+    /// <returns>SeriesCollection object</returns>
+    public SeriesCollection GetTotalMemoryInfo()
     {
         var seriesCollection = new SeriesCollection();
 
-        foreach (var info in _memoryUsageInfo)
+        foreach (var (title, value) in _memoryInfo.TotalMemoryInfo())
         {
-            var title = info.Key;
-            
             seriesCollection.Add(new PieSeries
             {
                 Title = title,
-                Values = new ChartValues<ObservableValue> {new ObservableValue(info.Value[1])},
+                Values = new ChartValues<ObservableValue> {new (value)},
                 DataLabels = true
             });
         }
