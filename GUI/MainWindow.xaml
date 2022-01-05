@@ -46,7 +46,10 @@
                 </lvc:PieChart.DataTooltip>
             </lvc:PieChart>
         </StackPanel>
-        
+        <!--        
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <Button Content="update" Click="UpdateAvailableMemoryOnClick"></Button>
+        </StackPanel> -->
     </Grid>
 
 </Window>
