@@ -18,14 +18,12 @@ public class MemoryCharts
     {
         var seriesCollection = new SeriesCollection();
         
-        foreach (var info in _memoryUsageInfo)
+        foreach (var (title, value) in _memoryUsageInfo)
         {
-            var title = info.Key;
-            
             seriesCollection.Add(new PieSeries
             {
                 Title = title,
-                Values = new ChartValues<ObservableValue> {new ObservableValue(info.Value[0])},
+                Values = new ChartValues<ObservableValue> {new (value[0])},
                 DataLabels = true
             });
         }
@@ -37,18 +35,16 @@ public class MemoryCharts
     {
         var seriesCollection = new SeriesCollection();
 
-        foreach (var info in _memoryUsageInfo)
+        foreach (var (title, value) in _memoryUsageInfo)
         {
-            var title = info.Key;
-            
             seriesCollection.Add(new PieSeries
             {
                 Title = title,
-                Values = new ChartValues<ObservableValue> {new ObservableValue(info.Value[1])},
+                Values = new ChartValues<ObservableValue> {new (value[1])},
                 DataLabels = true
             });
         }
-
+        
         return seriesCollection;
     }
 }
