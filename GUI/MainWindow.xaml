@@ -7,16 +7,16 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="725" Width="900">
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <!-- Total Memory Size Graph -->
@@ -47,11 +47,11 @@
             </lvc:PieChart>
         </StackPanel>
         
-        <StackPanel Grid.Row="0" Grid.Column="2">
-            <TextBlock>
-                <Run Text="{Binding RAMka}"></Run>
-            </TextBlock>
-        </StackPanel>
+        <GridSplitter Grid.Row="0" Grid.Column="1" ShowsPreview="True" Width="3" HorizontalAlignment="Right"
+                      VerticalAlignment="Stretch" />
+        <GridSplitter Grid.Row="0" Grid.Column="0" ShowsPreview="True" Width="3" HorizontalAlignment="Right"
+                      VerticalAlignment="Stretch" />
+        
     </Grid>
 
 </Window>
