@@ -2,26 +2,17 @@
 
 public class MemoryInfo
 {
-    /// <summary>
-    /// Gets computer drives info 
-    /// </summary>
-    /// <returns>Dictionary where key = drive name and value = list of disk characteristics </returns>
-    public static Dictionary<string, List<double>> MemoryUsageInfo()
+    private DriveInfo[] _driveInfo = DriveInfo.GetDrives();
+    
+    public Dictionary<string, double> AvailableMemoryInfo()
     {
-        var drives = DriveInfo.GetDrives();
-        var info = new Dictionary<string, List<double>>();
+        return _driveInfo.ToDictionary<DriveInfo, string, double>(drive => drive.Name,
+            drive => Math.Round(drive.AvailableFreeSpace / Math.Pow(1024, 3)));
+    }
 
-        foreach (var drive in drives)
-        {
-            var values = new List<double>
-            {
-                Math.Round(drive.TotalSize / Math.Pow(1024, 3), 2),
-                Math.Round(drive.AvailableFreeSpace / Math.Pow(1024, 3), 2)
-            };
-            
-            info.Add(drive.Name, values);
-        }
-
-        return info;
+    public Dictionary<string, double> TotalMemoryInfo()
+    {
+        return _driveInfo.ToDictionary<DriveInfo?, string, double>(drive => drive.Name,
+            drive => Math.Round(drive.TotalSize / Math.Pow(1024, 3)));
     }
 }

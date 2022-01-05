@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using LiveCharts;
 using LiveCharts.Defaults;
-using LiveCharts.Wpf;
-using ConsoleApp1;
 using GUI.Charts;
 
 namespace GUI;
@@ -15,7 +12,7 @@ namespace GUI;
 /// </summary>
 public partial class MainWindow
 {
-    private readonly MemoryCharts _memoryCharts = new MemoryCharts();
+    private readonly MemoryCharts _memoryCharts = new();
     public SeriesCollection MemoryUsageSeriesCollection { get; set; }
     public SeriesCollection MemoryAvailableSeriesCollection { get; set; }
         
@@ -23,7 +20,7 @@ public partial class MainWindow
     {
         InitializeComponent();
 
-        MemoryUsageSeriesCollection = _memoryCharts.GetTotalMemoryChart();
+        MemoryUsageSeriesCollection = _memoryCharts.GetTotalMemoryInfo();
         MemoryAvailableSeriesCollection = _memoryCharts.GetAvailableMemoryChart();
             
         DataContext = this;
