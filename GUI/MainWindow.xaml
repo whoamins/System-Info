@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="900">
+        Title="MainWindow" Height="725" Width="900">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -46,10 +46,12 @@
                 </lvc:PieChart.DataTooltip>
             </lvc:PieChart>
         </StackPanel>
-        <!--        
+        
         <StackPanel Grid.Row="0" Grid.Column="2">
-            <Button Content="update" Click="UpdateAvailableMemoryOnClick"></Button>
-        </StackPanel> -->
+            <TextBlock>
+                <Run Text="{Binding RAMka}"></Run>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 
 </Window>
