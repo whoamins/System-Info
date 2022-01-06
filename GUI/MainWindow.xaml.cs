@@ -17,9 +17,6 @@ namespace GUI;
 /// </summary>
 public partial class MainWindow
 {
-    private static readonly PerformanceCounter RamCounter = new("Memory", "Available MBytes");
-    public string RAMka { get; set; }
-    
     private readonly MemoryCharts _memoryCharts = new();
     private readonly MemoryInfo _memoryInfo = new();
     public SeriesCollection MemoryUsageSeriesCollection { get; set; }
@@ -32,8 +29,6 @@ public partial class MainWindow
         InitCharts();
 
         _ = RunInBackgroundUpdate();
-
-        RAMka = RamCounter.NextValue() + "mb";
         
         DataContext = this;
     }
