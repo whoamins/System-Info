@@ -16,10 +16,10 @@ namespace GUI;
 public partial class MainWindow
 {
     private readonly MemoryCharts _memoryCharts = new();
-    private static readonly MemoryInfo _memoryInfo = new();
+    private static readonly MemoryInfo MemoryInfo = new();
     public SeriesCollection MemoryUsageSeriesCollection { get; set; }
     public SeriesCollection MemoryAvailableSeriesCollection { get; set; }
-    public Dictionary<string, string> MemoryInfoDictionary { get; set; } = _memoryInfo.GetDriveFormat();
+    public Dictionary<string, string> MemoryInfoDictionary { get; set; } = MemoryInfo.GetDriveFormat();
 
     public MainWindow()
     {
@@ -37,7 +37,10 @@ public partial class MainWindow
         MemoryUsageSeriesCollection = _memoryCharts.GetTotalMemoryInfo();
         MemoryAvailableSeriesCollection = _memoryCharts.GetAvailableMemoryChart();
     }
-
+    
+    /// <summary>
+    /// Update available memory info
+    /// </summary>
     private void UpdateAvailableMemory()
     {
         var index = 0;
@@ -45,13 +48,16 @@ public partial class MainWindow
         {
             foreach (var observable in series.Values.Cast<ObservableValue>())
             {
-                var info = _memoryInfo.AvailableMemoryInfo().Values.ToArray();
+                var info = MemoryInfo.AvailableMemoryInfo().Values.ToArray();
                 observable.Value = info[index];
                 index++;
             }
         }
     }
 
+    /// <summary>
+    /// Update available memory info every 10 seconds
+    /// </summary>
     private async Task RunInBackgroundUpdate()
     {
         var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(10));
