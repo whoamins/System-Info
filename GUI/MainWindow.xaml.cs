@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Documents;
 using ConsoleApp1;
 using LiveCharts;
 using LiveCharts.Defaults;
@@ -18,14 +16,15 @@ namespace GUI;
 public partial class MainWindow
 {
     private readonly MemoryCharts _memoryCharts = new();
-    private readonly MemoryInfo _memoryInfo = new();
+    private static readonly MemoryInfo _memoryInfo = new();
     public SeriesCollection MemoryUsageSeriesCollection { get; set; }
     public SeriesCollection MemoryAvailableSeriesCollection { get; set; }
+    public Dictionary<string, string> MemoryInfoDictionary { get; set; } = _memoryInfo.GetDriveFormat();
 
     public MainWindow()
     {
         InitializeComponent();
-        
+
         InitCharts();
 
         _ = RunInBackgroundUpdate();

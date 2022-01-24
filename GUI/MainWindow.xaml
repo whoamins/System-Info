@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="725" Width="900">
+        Title="MainWindow" Height="670" Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -23,7 +23,7 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Width="Auto" Height="Auto">
             <TextBlock FontSize="24" HorizontalAlignment="Center">Total Memory Size</TextBlock>
             <lvc:PieChart Series="{Binding MemoryUsageSeriesCollection}" 
-                          LegendLocation="Bottom" InnerRadius="70" Width="300" Height="300" Padding="0">
+                          LegendLocation="Bottom" InnerRadius="70" Width="300" Height="280" Padding="0">
                 <lvc:PieChart.ChartLegend>
                     <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
                 </lvc:PieChart.ChartLegend>
@@ -34,10 +34,10 @@
         </StackPanel>
         
         <!-- Available Memory Size -->
-        <StackPanel Grid.Row="0" Grid.Column="1" Width="Auto" Height="Auto">
+        <StackPanel Grid.Row="1" Grid.Column="0" Width="Auto" Height="Auto">
             <TextBlock FontSize="24" HorizontalAlignment="Center">Available Memory Size</TextBlock>
             <lvc:PieChart Series="{Binding MemoryAvailableSeriesCollection}" 
-                          LegendLocation="Bottom" InnerRadius="70" Width="300" Height="300" Padding="0">
+                          LegendLocation="Bottom" InnerRadius="70" Width="300" Height="280" Padding="0">
                 <lvc:PieChart.ChartLegend>
                     <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
                 </lvc:PieChart.ChartLegend>
@@ -47,10 +47,33 @@
             </lvc:PieChart>
         </StackPanel>
         
-        <GridSplitter Grid.Row="0" Grid.Column="1" ShowsPreview="True" Width="3" HorizontalAlignment="Right"
-                      VerticalAlignment="Stretch" />
-        <GridSplitter Grid.Row="0" Grid.Column="0" ShowsPreview="True" Width="3" HorizontalAlignment="Right"
-                      VerticalAlignment="Stretch" />
+        <!-- Disk Memory Info -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Width="Auto" Height="Auto">
+            <TextBlock FontSize="24" HorizontalAlignment="Center" Margin="15 0 15 0" Padding="15 0 15 15">
+                Disk Information
+            </TextBlock>
+            <ItemsControl Margin="15 0 15 0"
+                          ItemsSource="{Binding MemoryInfoDictionary}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Key}" />
+                            <Separator Width="10" Visibility="Hidden"></Separator>
+                            <TextBlock Text="|"></TextBlock>
+                            <Separator Width="10" Visibility="Hidden"></Separator>
+                            <TextBlock Text="{Binding Path=Value}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        
+        
+        <!-- How to limit GridSplitter resize? -->
+        <!-- <GridSplitter Grid.Row="0" Grid.Column="1" ShowsPreview="True" Width="3" HorizontalAlignment="Left" -->
+        <!--               VerticalAlignment="Stretch" /> -->
+        <!-- <GridSplitter Grid.Row="1" Grid.Column="1" ShowsPreview="True" Width="3" HorizontalAlignment="Left" -->
+        <!--               VerticalAlignment="Stretch" /> -->
         
     </Grid>
 
