@@ -20,6 +20,7 @@ public partial class MainWindow
     public SeriesCollection MemoryUsageSeriesCollection { get; set; }
     public SeriesCollection MemoryAvailableSeriesCollection { get; set; }
     public Dictionary<string, string> MemoryInfoDictionary { get; set; } = MemoryInfo.GetDriveFormat();
+    public string OsInfo { get; set; } = OperatingSystemInfo.GetOperatingSystemInfo();
 
     public MainWindow()
     {

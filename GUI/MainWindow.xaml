@@ -66,8 +66,8 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            <TextBlock Margin="15 0 15 0" Text="{Binding Path=OsInfo}"></TextBlock>
         </StackPanel>
-        
         
         <!-- How to limit GridSplitter resize? -->
         <!-- <GridSplitter Grid.Row="0" Grid.Column="1" ShowsPreview="True" Width="3" HorizontalAlignment="Left" -->
