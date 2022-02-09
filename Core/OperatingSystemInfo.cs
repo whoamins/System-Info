@@ -1,10 +1,11 @@
-﻿
+﻿using System.Runtime.InteropServices;
+
 namespace ConsoleApp1;
 
 public class OperatingSystemInfo
 {
-    public static void getOperatingSystemInfo()
+    public static string GetOperatingSystemInfo()
     {
-        Console.WriteLine(System.Runtime.InteropServices.RuntimeInformation.OSDescription);
+        return RuntimeInformation.OSDescription;
     }
 }
